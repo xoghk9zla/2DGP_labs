@@ -21,60 +21,35 @@ class Boy:
 
 
     def handle_left_run(self):
-        self.x -= 5
-        self.run_frames += 1
-        if self.x < 0:
-            self.state = self.RIGHT_RUN
-            self.x = 0
-        if self.run_frames == 100:
-            self.state = self.LEFT_STAND
-            self.stand_frames = 0
+        pass # fill here
 
     def handle_left_stand(self):
-        self.stand_frames += 1
-        if self.stand_frames == 50:
-            self.state = self.LEFT_RUN
-            self.run_frames = 0
+        pass # fill here
 
 
     def handle_right_run(self):
-        self.x += 5
-        self.run_frames += 1
-        if self.x > 800:
-            self.state = self.LEFT_RUN
-            self.x = 800
-        if self.run_frames == 100:
-            self.state = self.RIGHT_STAND
-            self.stand_frames = 0
+        pass # fill here
 
 
     def handle_right_stand(self):
-        self.stand_frames += 1
-        if self.stand_frames == 50:
-            self.state = self.RIGHT_RUN
-            self.run_frames = 0
+        pass # fill here
 
 
-    handle_state = {
-        LEFT_RUN: handle_left_run,
-        RIGHT_RUN: handle_right_run,
-        LEFT_STAND: handle_left_stand,
-        RIGHT_STAND: handle_right_stand
-    }
+
+    #fill here
 
 
     def update(self):
-        self.frame = (self.frame + 1) % 8
-        self.handle_state[self.state](self)
+        pass # fill here
 
 
 
     def __init__(self):
         self.x, self.y = random.randint(100, 700), 90
         self.frame = random.randint(0, 7)
-        self.run_frames = random.randint(0, 99)
-        self.stand_frames = random.randint(0, 49)
-        self.state = random.randint(0, 3)
+        self.run_frames = 0
+        self.stand_frames = 0
+        self.state = self.RIGHT_RUN
         if Boy.image == None:
             Boy.image = load_image('animation_sheet.png')
 
@@ -96,7 +71,7 @@ def main():
 
     open_canvas()
 
-    team = [Boy() for i in range(10)]
+    boy = Boy()
     grass = Grass()
 
     global running
@@ -104,13 +79,12 @@ def main():
 
     while running:
         handle_events()
-        for boy in team:
-            boy.update()
+
+        boy.update()
 
         clear_canvas()
         grass.draw()
-        for boy in team:
-            boy.draw()
+        boy.draw()
         update_canvas()
 
         delay(0.04)

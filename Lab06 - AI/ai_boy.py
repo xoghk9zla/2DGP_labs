@@ -17,31 +17,13 @@ class Grass:
 class Boy:
     image = None
 
-    LEFT_RUN, RIGHT_RUN= 0, 1
-
     def __init__(self):
-        self.x, self.y = random.randint(100, 700), 90
-        self.frame = random.randint(0, 7)
-        self.dir = 1
-        self.state = self.RIGHT_RUN
-        if Boy.image == None:
-            Boy.image = load_image('animation_sheet.png')
+        #fill here
+        pass
 
     def update(self):
-        if self.state == self.RIGHT_RUN:
-            self.frame = (self.frame + 1) % 8
-            self.x += (self.dir * 5)
-        elif self.state == self.LEFT_RUN:
-            self.frame = (self.frame + 1) % 8
-            self.x += (self.dir * 5)
-        if self.x > 800:
-            self.dir = -1
-            self.x = 800
-            self.state = self.LEFT_RUN
-        elif self.x < 0:
-            self.dir = 1
-            self.x = 0
-            self.state = self.RIGHT_RUN
+        # fill here
+        pass
 
     def draw(self):
         self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
